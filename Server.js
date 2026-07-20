@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
@@ -10,10 +9,10 @@ const PORT = 3000;
 const SECRET_KEY = 'your_super_secret_glimer_key_123';
 
 app.use(cors());
-app.use(express.json({ limit: '10mb' })); // Для отправки аватарок
+app.use(express.json({ limit: '10mb' }));
 
-// --- БАЗА ДАННЫХ SQLite ---
-const db = new sqlite3.Database('./glimer.db');
+// ===== ВАЖНО: ИСПОЛЬЗУЕМ /tmp ДЛЯ RENDER =====
+const db = new sqlite3.Database('/tmp/glimer.db');
 
 // Создание таблиц
 db.serialize(() => {
@@ -47,26 +46,18 @@ db.serialize(() => {
     `);
 });
 
-// --- МАРШРУТЫ (API) ---
-
 // 1. Регистрация
 app.post('/api/register', async (req, res) => {
     const { username, name, email, password, avatar, bio, birthday, gender } = req.body;
-    
-    // Проверка на существование username или email
     db.get("SELECT id FROM users WHERE username = ? OR email = ?", [username, email], async (err, row) => {
         if (err) return res.status(500).json({ error: "Ошибка базы данных" });
         if (row) return res.status(400).json({ error: "Юзернейм или почта уже заняты" });
-
         const hashedPassword = await bcrypt.hash(password, 10);
-        
         db.run(
             "INSERT INTO users (username, name, email, password_hash, avatar, bio, birthday, gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
             [username, name, email, hashedPassword, avatar, bio, birthday, gender],
             function(err) {
                 if (err) return res.status(500).json({ error: "Ошибка создания пользователя" });
-                
-                // Возвращаем созданного пользователя и его ID
                 const newUser = { id: this.lastID, username, name, email, avatar, bio, verified: 0 };
                 const token = jwt.sign({ id: this.lastID }, SECRET_KEY);
                 res.json({ user: newUser, token });
@@ -75,31 +66,25 @@ app.post('/api/register', async (req, res) => {
     });
 });
 
-// 2. Авторизация (Логин)
+// 2. Авторизация
 app.post('/api/login', (req, res) => {
     const { username, password } = req.body;
-
     db.get("SELECT * FROM users WHERE username = ?", [username], async (err, user) => {
         if (err) return res.status(500).json({ error: "Ошибка сервера" });
         if (!user) return res.status(401).json({ error: "Пользователь не найден" });
-
         const validPass = await bcrypt.compare(password, user.password_hash);
         if (!validPass) return res.status(401).json({ error: "Неверный пароль" });
-
         const token = jwt.sign({ id: user.id }, SECRET_KEY);
         const { password_hash, ...userData } = user;
         res.json({ user: userData, token });
     });
 });
 
-// 3. Глобальный поиск (Серверный эндпоинт)
+// 3. Глобальный поиск
 app.get('/api/search', (req, res) => {
     const query = req.query.q;
-    if (!query) return res.json({ users: [], groups: [] });
-
+    if (!query) return res.json({ users: [] });
     const searchPattern = `%${query}%`;
-
-    // Ищем юзеров (исключая заблокированных)
     db.all(
         "SELECT id, username, name, avatar, verified FROM users WHERE (username LIKE ? OR id LIKE ?) AND blocked = 0 LIMIT 20",
         [searchPattern, searchPattern],
@@ -110,19 +95,18 @@ app.get('/api/search', (req, res) => {
     );
 });
 
-// 4. Получение профиля пользователя по ID или username
+// 4. Получение профиля пользователя
 app.get('/api/user/:identifier', (req, res) => {
     const identifier = req.params.identifier;
     const isId = !isNaN(identifier);
     let query = isId ? "SELECT id, username, name, avatar, bio, verified FROM users WHERE id = ?" : "SELECT id, username, name, avatar, bio, verified FROM users WHERE username = ?";
-    
     db.get(query, [identifier], (err, user) => {
         if (err || !user) return res.status(404).json({ error: "Пользователь не найден" });
         res.json(user);
     });
 });
 
-// 5. Отправка заявки на верификацию
+// 5. Заявка на верификацию
 app.post('/api/verify-request', (req, res) => {
     const { userId, who, why, link } = req.body;
     db.run(
@@ -135,7 +119,6 @@ app.post('/api/verify-request', (req, res) => {
     );
 });
 
-// Запуск сервера
 app.listen(PORT, () => {
-    console.log(`🚀 Glimer Backend запущен на http://localhost:${PORT}`);
+    console.log(`🚀 Glimer Backend запущен на https://glimer.onrender.com `);
 });

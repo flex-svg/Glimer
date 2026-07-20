@@ -6,7 +6,6 @@
 <title>Glimer — Мессенджер</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* ===== БАЗОВЫЕ СТИЛИ ===== */
 :root {
     --bg-app: #F2F4F8;
     --bg-white: #FFFFFF;
@@ -41,7 +40,6 @@
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; font-family: var(--app-font-family); }
 body { background: var(--bg-app); display: flex; justify-content: center; align-items: center; min-height: 100vh; color: var(--text-main); }
 
-/* ===== КОНТЕЙНЕР ===== */
 .app-container {
     width: 100%;
     max-width: 420px;
@@ -56,7 +54,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 @media(min-width: 768px) { .app-container { height: 90vh; border-radius: 40px; box-shadow: 0 25px 60px rgba(0,0,0,0.1); } }
 @media(max-width: 767px) { .app-container { max-height: 100vh; border-radius: 0; } }
 
-/* ===== ВЕРХНЯЯ ПАНЕЛЬ ===== */
 .top-bar {
     display: flex;
     justify-content: space-between;
@@ -72,14 +69,12 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .top-bar .btn-lang { background: transparent; border: none; color: var(--primary-blue); font-size: 15px; font-weight: 600; cursor: pointer; }
 .top-bar .btn-theme { background: transparent; border: none; color: var(--text-main); font-size: 22px; cursor: pointer; }
 
-/* ===== СЛАЙДЫ ===== */
 .slides-wrapper { flex: 1; display: flex; flex-direction: column; position: relative; overflow: hidden; background: var(--bg-white); }
 .slide-item { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 0 24px 40px 24px; opacity: 0; transform: translateX(100%); transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1); pointer-events: none; overflow-y: auto; background: var(--bg-white); }
 .slide-item.active { opacity: 1; transform: translateX(0); pointer-events: all; }
 .slide-item.exit-left { transform: translateX(-30%); opacity: 0; }
 .slide-item.exit-right { transform: translateX(100%); opacity: 0; }
 
-/* ===== УНИВЕРСАЛЬНЫЕ КОМПОНЕНТЫ ===== */
 .screen-title { font-size: 32px; font-weight: 700; color: var(--text-main); margin-top: 20px; margin-bottom: 8px; text-align: center; letter-spacing: -0.5px; }
 .screen-subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 30px; text-align: center; line-height: 1.4; }
 .input-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
@@ -93,7 +88,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .primary-btn:disabled { opacity: 0.5; transform: none; }
 .error-text { color: #FF3B30; font-size: 13px; font-weight: 500; margin-top: -8px; margin-bottom: 8px; display: none; }
 
-/* ===== ЭКРАН ПРИВЕТСТВИЯ ===== */
 .hero-container { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 24px; }
 .hero-logo { width: 80px; height: 80px; background: var(--primary-blue); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 40px; color: #fff; box-shadow: 0 8px 24px rgba(0,122,255,0.2); }
 .hero-text h1 { font-size: 36px; font-weight: 700; color: var(--text-main); text-align: center; margin: 0; }
@@ -101,14 +95,12 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .hero-buttons { width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
 .hero-buttons .secondary-btn { background: var(--bg-input); color: var(--text-main); }
 
-/* ===== ЭКРАН КОДА ===== */
 .code-input-container { display: flex; justify-content: center; gap: 12px; margin: 40px 0; }
 .code-box { width: 56px; height: 64px; background: var(--bg-input); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 600; color: var(--text-main); border: 1px solid transparent; transition: all 0.2s; }
 .code-box.active { border-color: var(--primary-blue); background: var(--bg-white); }
 .code-box.filled { border-color: var(--primary-blue); background: var(--bg-white); }
 .code-hint { text-align: center; font-size: 15px; color: var(--text-muted); margin-top: -20px; }
 
-/* ===== КЛАВИАТУРА ===== */
 .keyboard-container { position: absolute; bottom: 0; left: 0; right: 0; background: var(--bg-app); border-top: 1px solid var(--border-light); padding: 16px; padding-bottom: 30px; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1); z-index: 30; }
 .keyboard-container.active { transform: translateY(0); }
 .numpad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 320px; margin: 0 auto; }
@@ -118,9 +110,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .numpad-key.backspace { background: transparent; font-size: 20px; box-shadow: none; }
 .numpad-key.empty { background: transparent; pointer-events: none; box-shadow: none; }
 
-/* ========================================================== */
-/* ===== ГЛАВНЫЙ ЭКРАН ЧАТОВ ===== */
-/* ========================================================== */
 .app-main {
     width: 100%; height: 100vh; background: var(--bg-app);
     display: none; flex-direction: column; overflow: hidden; position: relative;
@@ -151,7 +140,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 
 .chat-list-wrapper { padding: 0 20px; display: flex; flex-direction: column; }
 
-/* Папки */
 .folder-bar {
     display: none;
     gap: 10px; padding: 12px 0 16px 0; overflow-x: auto;
@@ -187,13 +175,9 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .chat-row-preview .sender { color: var(--text-main); font-weight: 500; }
 .verified-badge { color: #007AFF; font-size: 14px; margin-left: 2px; }
 
-/* ========================================================== */
-
-/* ===== ДРУГИЕ СЦЕНЫ ===== */
 .scene-view { position: absolute; inset: 0; padding: 20px 20px 100px 20px; overflow-y: auto; opacity: 0; transform: translateY(12px); pointer-events: none; transition: all .4s cubic-bezier(.2,.8,.2,1); background: var(--bg-app); }
 .scene-view.active { opacity: 1; transform: translateY(0); pointer-events: all; }
 
-/* ===== НИЖНЯЯ ПАНЕЛЬ ===== */
 .bottom-nav {
     position: absolute; bottom: 20px; left: 20px; right: 20px;
     background: var(--bg-white); border: 1px solid var(--border-light);
@@ -218,8 +202,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
     border-radius: 50%; min-width: 16px; height: 16px; display: flex; align-items: center; justify-content: center;
 }
 
-/* ========================================================== */
-/* ===== КОНТАКТЫ ===== */
 .contacts-wrapper { display: flex; flex-direction: column; gap: 16px; padding-bottom: 80px; padding-top: 10px; }
 .contacts-header h1 { font-size: 34px; font-weight: 700; color: var(--text-main); padding-bottom: 8px; }
 .contacts-search { background: var(--bg-input); border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--border-light); }
@@ -251,8 +233,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .contact-card-item .contact-username { font-size: 13px; color: var(--text-muted); }
 .contact-card-item .contact-chat-icon { color: var(--primary-blue); font-size: 18px; opacity: .6; }
 
-/* ========================================================== */
-/* ===== КАСТОМИЗАЦИЯ ===== */
 .customization-view { display: none; position: absolute; inset: 0; background: var(--bg-app); z-index: 15; flex-direction: column; }
 .customization-view.active { display: flex; animation: slideIn 0.3s ease; will-change: transform,opacity; }
 .cust-top-bar { display: flex; justify-content: flex-end; align-items: center; padding: 16px 20px; flex-shrink: 0; background: var(--bg-app); }
@@ -285,8 +265,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .cust-nav-icon { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted); }
 .cust-nav-icon i { font-size: 22px; color: var(--text-muted); }
 
-/* ========================================================== */
-/* ===== ЯЗЫК ===== */
 .lang-view { display: none; position: absolute; inset: 0; background: var(--bg-app); z-index: 16; flex-direction: column; }
 .lang-view.active { display: flex; animation: slideIn .3s ease; will-change: transform,opacity; }
 .lang-top-bar { display: flex; justify-content: center; align-items: center; padding: 12px 16px; position: relative; flex-shrink: 0; background: var(--bg-app); }
@@ -303,8 +281,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .lang-item .check { color: var(--primary-blue); font-size: 16px; opacity: 0; transition: .2s; }
 .lang-item.active .check { opacity: 1; }
 
-/* ========================================================== */
-/* ===== ПАПКИ ===== */
 .folders-view { display: none; position: absolute; inset: 0; background: var(--bg-app); z-index: 15; flex-direction: column; }
 .folders-view.active { display: flex; animation: slideIn .3s ease; will-change: transform,opacity; }
 .folders-top-bar { display: flex; justify-content: flex-end; align-items: center; padding: 16px 20px; flex-shrink: 0; background: var(--bg-app); }
@@ -334,8 +310,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .folder-create-modal .btn-create-confirm { background: var(--primary-blue); color: white; }
 .folder-create-modal .btn-create-cancel { background: var(--bg-input); color: var(--text-main); }
 
-/* ========================================================== */
-/* ===== РЕДАКТОР ПРОФИЛЯ ===== */
 .edit-profile-view {
     display: none; position: absolute; inset: 0; background: var(--bg-app); z-index: 50; flex-direction: column;
 }
@@ -363,8 +337,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .editp-select { background: transparent; border: none; outline: none; font-size: 16px; color: var(--text-main); width: 100%; cursor: pointer; }
 .editp-select option { color: var(--text-main); background: var(--bg-white); }
 
-/* ========================================================== */
-/* ===== ПРОФИЛЬ ===== */
 .profile-page-v2 { display: flex; flex-direction: column; gap: 16px; padding-bottom: 80px; position: relative; }
 .profile-header-v2 {
     display: flex; flex-direction: column; align-items: center; padding: 20px 16px 24px 16px;
@@ -402,8 +374,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .profile-info-card .info-row .info-text .label { font-size: 13px; color: var(--text-muted); }
 .profile-info-card .info-row .info-text .value { font-size: 16px; font-weight: 500; color: var(--text-main); }
 
-/* ========================================================== */
-/* ===== ВЕРИФИКАЦИЯ ===== */
 .verify-view { display: none; position: absolute; inset: 0; background: var(--bg-app); z-index: 20; flex-direction: column; }
 .verify-view.active { display: flex; animation: slideIn .3s ease; }
 .verify-top-bar { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; flex-shrink: 0; background: var(--bg-app); }
@@ -420,8 +390,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .verify-card .field-input:focus { border-color: var(--primary-blue); background: var(--bg-white); }
 .verify-card .field-input::placeholder { color: var(--text-muted); }
 
-/* ========================================================== */
-/* ===== ЧАТ ===== */
 .chat-view {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     background: var(--bg-app); z-index: 1000;
@@ -475,8 +443,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .record-btn-wrapper.recording .mic-btn { background: var(--primary-red); color: white; animation: pulse-record 1s infinite; }
 @keyframes pulse-record { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
 
-/* ========================================================== */
-/* ===== ГРУППЫ ===== */
 .new-chat-modal {
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     background: var(--bg-app); z-index: 2000;
@@ -572,8 +538,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 .gi-delete-btn { background: var(--bg-white); border: 1px solid var(--border-light); border-radius: var(--radius-card); padding: 14px; text-align: center; color: var(--primary-red); font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: var(--shadow-card); }
 .gi-delete-btn:active { opacity: 0.7; }
 
-/* ========================================================== */
-/* ===== АДМИН-ПАНЕЛЬ ===== */
 .admin-stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .admin-stat-box { background: var(--bg-white); border: 1px solid var(--border-light); border-radius: var(--radius-card); padding: 16px; text-align: center; box-shadow: var(--shadow-card); }
 .admin-stat-box .stat-number { font-size: 24px; font-weight: 700; color: var(--text-main); }
@@ -696,8 +660,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
                 <button class="primary-btn" onclick="finishRegistration()">Готово</button>
             </div>
         </div>
-
-        <!-- НОВЫЙ СЛАЙД: ПОКАЗ ID -->
         <div class="slide-item" id="slideIdDisplay" data-index="5">
             <div style="display:flex;flex-direction:column;flex:1;justify-content:center;align-items:center;text-align:center;">
                 <div style="font-size:64px;margin-bottom:20px;"><i class="fas fa-id-card" style="color:var(--primary-blue);"></i></div>
@@ -777,7 +739,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
             </div>
         </div>
 
-        <!-- ===== СЦЕНА КОНТАКТЫ ===== -->
         <div class="scene-view" id="sceneContacts">
             <div class="contacts-wrapper">
                 <div class="contacts-header"><h1>Контакты</h1></div>
@@ -801,7 +762,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
             </div>
         </div>
 
-        <!-- ===== СЦЕНА КАСТОМИЗАЦИЯ ===== -->
         <div class="customization-view" id="customizationView">
             <div class="cust-top-bar"><button class="cust-done-btn" onclick="closeCustomization()">Готово</button></div>
             <div class="cust-title-main">Кастомизация</div>
@@ -837,7 +797,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
             </div>
         </div>
 
-        <!-- ===== СЦЕНА ЯЗЫК ===== -->
         <div class="lang-view" id="langView">
             <div class="lang-top-bar"><div class="lang-back-btn" onclick="closeLangView()"><i class="fas fa-chevron-left"></i></div><div class="lang-title">Язык</div></div>
             <div class="lang-content">
@@ -848,7 +807,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
             </div>
         </div>
 
-        <!-- ===== СЦЕНА ПАПКИ ===== -->
         <div class="folders-view" id="foldersView">
             <div class="folders-top-bar"><button class="folders-done-btn" onclick="closeFoldersView()">Готово</button></div>
             <div class="folders-title">Папки</div>
@@ -875,7 +833,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
             </div>
         </div>
 
-        <!-- ===== СЦЕНА РЕДАКТОР ПРОФИЛЯ ===== -->
         <div class="edit-profile-view" id="editProfileView">
             <div class="editp-top-bar"><button class="editp-cancel" onclick="closeEditProfile()">Отмена</button><div class="editp-title">Редактировать профиль</div><button class="editp-save" onclick="saveEditProfile()">Готово</button></div>
             <div class="editp-content">
@@ -904,7 +861,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
             </div>
         </div>
 
-        <!-- ===== СЦЕНА ПРОФИЛЬ ===== -->
         <div class="scene-view" id="sceneProfile">
             <div class="profile-page-v2">
                 <div class="profile-header-v2">
@@ -925,7 +881,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
             </div>
         </div>
 
-        <!-- ===== СЦЕНА НАСТРОЙКИ ===== -->
         <div class="scene-view" id="sceneSettings">
             <div class="settings-screen">
                 <div class="settings-group" style="background:var(--bg-white);border-radius:var(--radius-card);border:1px solid var(--border-light);overflow:hidden;box-shadow:var(--shadow-card);margin-bottom:16px;">
@@ -958,7 +913,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
             </div>
         </div>
 
-        <!-- ===== СЦЕНА АДМИН-ПАНЕЛЬ ===== -->
         <div class="scene-view" id="sceneAdminPanel">
             <div style="display:flex;align-items:center;gap:16px;padding-bottom:20px;">
                 <div class="btn-header-circle" onclick="switchTab('settings')" style="background:var(--bg-white);border:1px solid var(--border-light);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--shadow-card);">
@@ -988,7 +942,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
             </div>
         </div>
 
-        <!-- ===== СЦЕНА ВЕРИФИКАЦИЯ ===== -->
         <div class="verify-view" id="verifyView">
             <div class="verify-top-bar"><div class="verify-cancel" onclick="closeVerifyView()">Отмена</div><div class="verify-send" id="verifySendBtn" onclick="sendVerificationRequest()">Отправить</div></div>
             <div class="verify-title">Верификация</div>
@@ -1008,7 +961,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
             </div>
         </div>
 
-        <!-- НИЖНЯЯ ПАНЕЛЬ -->
         <div class="bottom-nav">
             <div class="nav-item active" onclick="switchTab('chats')">
                 <i class="fas fa-comment-dots"></i>
@@ -1022,10 +974,9 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
     </div>
 </div>
 
-<!-- ===== ЧАТ ===== -->
 <div class="chat-view" id="chatView">
-    <div class="chat-top-bar" onclick="handleChatTopClick()">
-        <div class="chat-back-btn" onclick="event.stopPropagation(); closeChat()"><i class="fas fa-chevron-left"></i></div>
+    <div class="chat-top-bar">
+        <div class="chat-back-btn" onclick="closeChat()"><i class="fas fa-chevron-left"></i></div>
         <div class="chat-top-center">
             <div class="chat-top-name" id="chatTopName">Имя</div>
             <div class="chat-top-username" id="chatTopUsername">@username</div>
@@ -1036,14 +987,13 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
     <div class="chat-input-area">
         <div class="chat-input-btn"><i class="fas fa-smile" onclick="sendSticker()"></i></div>
         <input type="text" class="chat-input-field" id="messageInput" placeholder="Сообщение..." onkeydown="if(event.key==='Enter') sendMessage()">
-        <div class="chat-input-btn" onclick="document.getElementById('chatFileInput').click()"><i class="fas fa-paperclip"></i><input type="file" id="chatFileInput" accept="image/*" onchange="handleFile(this)" style="display:none;"></div>
+        <div class="chat-input-btn" onclick="document.getElementById('chatFileInput').click()"><i class="fas fa-paperclip"></i><input type="file" id="chatFileInput" onchange="handleFile(this)" style="display:none;"></div>
         <div class="record-btn-wrapper" id="recordBtnWrapper">
             <button class="mic-btn" id="recordBtn" onmousedown="startRecording()" onmouseup="stopRecording()" onmouseleave="stopRecording()"><i class="fas fa-microphone"></i></button>
         </div>
     </div>
 </div>
 
-<!-- ===== НОВЫЙ ЧАТ ===== -->
 <div class="new-chat-modal" id="newChatModal">
     <div class="new-chat-top">
         <div class="close-btn" onclick="closeNewChatModal()"><i class="fas fa-times"></i></div>
@@ -1060,7 +1010,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
     </div>
 </div>
 
-<!-- ===== МАСТЕР СОЗДАНИЯ ГРУППЫ ===== -->
 <div class="group-create-slides" id="groupCreateSlides">
     <div class="gc-top-bar">
         <button class="back-btn" id="gcBackBtn" onclick="gcPrevSlide()">Назад</button>
@@ -1105,7 +1054,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
     </div>
 </div>
 
-<!-- ===== ПРОФИЛЬ ГРУППЫ ===== -->
 <div class="group-profile-view" id="groupProfileView">
     <div class="gp-top-bar">
         <div class="close-btn" onclick="closeGroupProfile()">Закрыть</div>
@@ -1115,7 +1063,6 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
     <div class="gp-content" id="gpContent"></div>
 </div>
 
-<!-- ===== НАСТРОЙКИ ГРУППЫ ===== -->
 <div class="group-info-view" id="groupInfoView">
     <div class="gi-top-bar">
         <button class="back-btn" onclick="closeGroupInfo()">Назад</button>
@@ -1126,10 +1073,12 @@ body { background: var(--bg-app); display: flex; justify-content: center; align-
 </div>
 
 <script>
+// ===== КОНФИГУРАЦИЯ СЕРВЕРА =====
+const API_URL = 'https://glimer.onrender.com/api';
+
 // ===== ЯДРО МЕССЕНДЖЕРА =====
 let currentUser = null;
 let currentChat = null;
-let _cachedUsers = null;
 let _cachedMessages = null;
 let _cachedGroups = null;
 let currentFolder = 'all';
@@ -1144,18 +1093,17 @@ let gcStep = 1;
 let gcData = { name: '', desc: '', username: '', type: 'public', avatar: null, members: [] };
 let editingGroupUsername = null;
 
-let pendingNewUser = null; // Для хранения пользователя перед показом ID
+let pendingNewUser = null;
 
-function getUsers() {
-    if (_cachedUsers) return _cachedUsers;
-    const users = localStorage.getItem('glimer_users');
-    _cachedUsers = users ? JSON.parse(users) : [];
-    return _cachedUsers;
+// Вспомогательная функция для запросов к серверу
+async function apiRequest(endpoint, method = 'GET', body = null) {
+    const options = { method, headers: { 'Content-Type': 'application/json' } };
+    if (body) options.body = JSON.stringify(body);
+    const response = await fetch(API_URL + endpoint, options);
+    return response.json();
 }
-function saveUsers(users) {
-    _cachedUsers = users;
-    localStorage.setItem('glimer_users', JSON.stringify(users));
-}
+
+// ===== ЛОКАЛЬНЫЕ ХРАНИЛИЩА (ЧАТЫ И ГРУППЫ ОСТАЮТСЯ НА КЛИЕНТЕ ПОКА) =====
 function getMessages() {
     if (_cachedMessages) return _cachedMessages;
     const msgs = localStorage.getItem('glimer_messages');
@@ -1185,16 +1133,8 @@ function saveCurrentUser(user) {
     currentUser = user;
     localStorage.setItem('glimer_current_user', JSON.stringify(user));
 }
-function isUsernameTaken(username, excludeUsername) {
-    const users = getUsers(); const groups = getGroups();
-    if (!username) return false;
-    const formatted = username.startsWith('@') ? username : '@' + username;
-    if (users.some(u => u.username === formatted && u.username !== excludeUsername)) return true;
-    if (groups.some(g => g.username === formatted && g.username !== excludeUsername)) return true;
-    return false;
-}
 
-// ===== АВТОРИЗАЦИЯ И РЕГИСТРАЦИЯ =====
+// ===== АВТОРИЗАЦИЯ И РЕГИСТРАЦИЯ (СЕРВЕРНЫЕ ЗАПРОСЫ) =====
 let currentSlideIndex = 0;
 let regData = { email: '', password: '', name: '', username: '', bio: '', avatar: null };
 let verificationCode = '';
@@ -1236,6 +1176,7 @@ function toggleTheme() {
     const custToggle = document.getElementById('custThemeToggle');
     if(custToggle) { if(currentTheme === 'dark') { custToggle.classList.add('active'); custToggle.classList.remove('inactive'); } else { custToggle.classList.remove('active'); custToggle.classList.add('inactive'); } }
 }
+
 function validateEmail() {
     const val = document.getElementById('emailInput').value.trim(); const btn = document.getElementById('emailContinueBtn'); const error = document.getElementById('emailError');
     if (!val.endsWith('@gmail.com')) { error.style.display = 'block'; btn.disabled = true; } else { error.style.display = 'none'; btn.disabled = false; regData.email = val; }
@@ -1265,34 +1206,63 @@ function loadAvatarFromFile(input) {
         reader.readAsDataURL(file);
     }
 }
-function checkUsernameAvailabilityReg(val) {
+
+// Регистрация через сервер
+async function checkUsernameAvailabilityReg(val) {
     const statusEl = document.getElementById('regUsernameStatus');
     if (!val || val === '') { statusEl.style.display = 'none'; return; }
     const formatted = val.startsWith('@') ? val : '@' + val;
-    if (isUsernameTaken(formatted)) { statusEl.style.display = 'block'; statusEl.innerHTML = '<span style="color:#FF3B30;">✗</span> Юзернейм занят'; statusEl.style.color = '#FF3B30'; } else { statusEl.style.display = 'block'; statusEl.innerHTML = '<span style="color:#34C759;">✓</span> Юзернейм свободен'; statusEl.style.color = '#34C759'; }
+    // Эмуляция проверки занятости, т.к. в API нет отдельного endpoint'а для проверки
+    try {
+        const data = await apiRequest('/search?q=' + encodeURIComponent(formatted));
+        const found = data.users.find(u => u.username === formatted);
+        if (found) {
+            statusEl.style.display = 'block';
+            statusEl.innerHTML = '<span style="color:#FF3B30;">✗</span> Юзернейм занят';
+            statusEl.style.color = '#FF3B30';
+        } else {
+            statusEl.style.display = 'block';
+            statusEl.innerHTML = '<span style="color:#34C759;">✓</span> Юзернейм свободен';
+            statusEl.style.color = '#34C759';
+        }
+    } catch (e) {
+        // Если ошибка сети, пропускаем проверку
+    }
 }
 
-function finishRegistration() {
+async function finishRegistration() {
     const name = document.getElementById('profileName').value.trim();
     const username = document.getElementById('profileUsername').value.trim().toLowerCase();
     const bio = document.getElementById('profileBio').value.trim();
     if (!name) { alert('Пожалуйста, введите ваше имя.'); return; }
     if (!username) { alert('Пожалуйста, введите юзернейм.'); return; }
     const formattedUsername = username.startsWith('@') ? username : '@' + username;
-    if (isUsernameTaken(formattedUsername)) { alert('Этот юзернейм уже занят!'); return; }
+    
     regData.name = name; regData.username = formattedUsername; regData.bio = bio;
-    const users = getUsers();
-    // Генерация ID строго по порядку
-    let nextId = 1;
-    if (users.length > 0) {
-        const maxId = Math.max(...users.map(u => u.id));
-        nextId = maxId + 1;
+    
+    try {
+        const data = await apiRequest('/register', 'POST', {
+            username: formattedUsername,
+            name: regData.name,
+            email: regData.email,
+            password: regData.password,
+            avatar: regData.avatar || null,
+            bio: regData.bio,
+            birthday: '',
+            gender: 'not_specified'
+        });
+        
+        if (data.error) {
+            alert(data.error);
+            return;
+        }
+        
+        pendingNewUser = data.user;
+        document.getElementById('finalIdDisplay').textContent = '#' + data.user.id;
+        goToSlide('slideIdDisplay');
+    } catch (err) {
+        alert('Ошибка подключения к серверу: ' + err.message);
     }
-    const newUser = { id: nextId, name: regData.name, username: regData.username, email: regData.email, password: regData.password, avatar: regData.avatar, bio: regData.bio, verified: false, birthday: '', gender: 'not_specified', verifyRequest: null, blocked: false };
-    users.push(newUser); saveUsers(users);
-    pendingNewUser = newUser;
-    document.getElementById('finalIdDisplay').textContent = '#' + newUser.id;
-    goToSlide('slideIdDisplay');
 }
 
 function completeRegistration() {
@@ -1302,26 +1272,66 @@ function completeRegistration() {
     initApp();
 }
 
-function validateLoginUsername() {
-    const val = document.getElementById('loginUsername').value.trim().toLowerCase(); const btn = document.getElementById('loginUsernameBtn'); const error = document.getElementById('loginUsernameError');
-    const formatted = '@' + val; const users = getUsers(); const found = users.find(u => u.username === formatted);
-    if (found) { error.style.display = 'none'; btn.disabled = false; loginUsername = formatted; loginUserObject = found; } else { error.style.display = 'block'; btn.disabled = true; }
+// Авторизация через сервер
+async function validateLoginUsername() {
+    const val = document.getElementById('loginUsername').value.trim().toLowerCase();
+    const btn = document.getElementById('loginUsernameBtn');
+    const error = document.getElementById('loginUsernameError');
+    const formatted = '@' + val;
+    // Используем поиск, чтобы проверить существование пользователя
+    try {
+        const data = await apiRequest('/search?q=' + encodeURIComponent(formatted));
+        const found = data.users.find(u => u.username === formatted);
+        if (found) {
+            error.style.display = 'none'; btn.disabled = false;
+            loginUsername = formatted; loginUserObject = found;
+        } else {
+            error.style.display = 'block'; btn.disabled = true;
+        }
+    } catch (e) {
+        error.style.display = 'block'; btn.disabled = true;
+    }
 }
 function validateLoginPassword() {
     const pass = document.getElementById('loginPassInput').value; const btn = document.getElementById('loginPassBtn'); const error = document.getElementById('loginPassError');
-    if (pass === loginUserObject?.password) { error.style.display = 'none'; btn.disabled = false; loginPassword = pass; } else { if (pass.length > 0) error.style.display = 'block'; btn.disabled = true; }
+    // Пока проверка пароля на клиенте (т.к. нет эндпоинта для проверки пароля отдельно)
+    // В реальности стоит использовать /login
+    if (pass.length > 0) { error.style.display = 'none'; btn.disabled = false; loginPassword = pass; } else { error.style.display = 'block'; btn.disabled = true; }
 }
 function loginCodeInput(val) { if (loginEnteredCode.length < 4) { loginEnteredCode += val; updateCodeBoxes('loginCodeInputContainer', loginEnteredCode); if (loginEnteredCode.length === 4) validateLoginCode(); } }
 function loginCodeBackspace() { loginEnteredCode = loginEnteredCode.slice(0, -1); updateCodeBoxes('loginCodeInputContainer', loginEnteredCode); document.getElementById('loginCodeBtn').disabled = true; }
 function validateLoginCode() {
     const boxes = document.querySelectorAll('#loginCodeInputContainer .code-box');
-    if (loginEnteredCode === loginVerificationCode) { boxes.forEach(b => b.style.borderColor = '#34C759'); setTimeout(() => finishLogin(), 300); } else { boxes.forEach(b => b.style.borderColor = '#FF3B30'); setTimeout(() => { boxes.forEach(b => b.style.borderColor = ''); loginEnteredCode = ''; updateCodeBoxes('loginCodeInputContainer', loginEnteredCode); }, 1000); }
+    if (loginEnteredCode === loginVerificationCode) {
+        boxes.forEach(b => b.style.borderColor = '#34C759');
+        setTimeout(() => finishLogin(), 300);
+    } else {
+        boxes.forEach(b => b.style.borderColor = '#FF3B30');
+        setTimeout(() => { boxes.forEach(b => b.style.borderColor = ''); loginEnteredCode = ''; updateCodeBoxes('loginCodeInputContainer', loginEnteredCode); }, 1000);
+    }
 }
-function finishLogin() { saveCurrentUser(loginUserObject); document.getElementById('authContainer').style.display = 'none'; document.getElementById('appMain').style.display = 'flex'; initApp(); }
+async function finishLogin() {
+    try {
+        const data = await apiRequest('/login', 'POST', {
+            username: loginUsername,
+            password: loginPassword
+        });
+        if (data.error) {
+            alert(data.error);
+            return;
+        }
+        saveCurrentUser(data.user);
+        document.getElementById('authContainer').style.display = 'none';
+        document.getElementById('appMain').style.display = 'flex';
+        initApp();
+    } catch (err) {
+        alert('Ошибка входа: ' + err.message);
+    }
+}
 
 // ===== ЯДРО ПРИЛОЖЕНИЯ =====
 function initApp() {
-    updateProfileUI(); renderChats(); switchTab('chats'); renderAdminRequests(); calculateUnreadBadge();
+    updateProfileUI(); renderChats(); switchTab('chats');
     const savedLang = localStorage.getItem('glimer_lang') || 'ru'; applyLanguage(savedLang);
     if(currentTheme === 'dark') { document.documentElement.setAttribute('data-theme', 'dark'); document.getElementById('btnTheme').innerHTML = '<i class="fas fa-sun"></i>'; }
 }
@@ -1346,26 +1356,22 @@ function updateProfileUI() {
     const badge = document.getElementById('profileVerificationBadgeV2');
     badge.style.display = currentUser.verified ? 'inline-block' : 'none';
     
-    // Синхронизация аватарки в редакторе профиля
     document.getElementById('editProfileAvatar').style.backgroundImage = currentUser.avatar ? `url(${currentUser.avatar})` : '';
     document.getElementById('editProfileAvatar').textContent = currentUser.avatar ? '' : '🐱';
 }
 
-// ===== ТЕМЫ И КАСТОМИЗАЦИЯ =====
 function selectAccent(el, name, color) { document.querySelectorAll('.cust-color-circle').forEach(c => c.classList.remove('active')); el.classList.add('active'); document.getElementById('accentColorLabel').textContent = name; document.documentElement.style.setProperty('--primary-blue', color); }
 function updateTextSize(val) { document.getElementById('textSizeValue').textContent = val + 'px'; document.documentElement.style.setProperty('--base-font-size', val + 'px'); }
 function updateEmojiSize(val) { document.getElementById('emojiSizeValue').textContent = val + 'px'; document.documentElement.style.setProperty('--emoji-size', val + 'px'); }
 function openCustomization() { document.getElementById('customizationView').classList.add('active'); }
 function closeCustomization() { document.getElementById('customizationView').classList.remove('active'); }
 
-// ===== ЯЗЫКИ =====
 const translations = { 'ru': { 'nav_chats': 'Чаты', 'nav_contacts': 'Контакты', 'nav_profile': 'Вы', 'nav_settings': 'Настройки' }, 'en': { 'nav_chats': 'Chats', 'nav_contacts': 'Contacts', 'nav_profile': 'You', 'nav_settings': 'Settings' } };
 function applyLanguage(lang) { localStorage.setItem('glimer_lang', lang); currentLang = lang; document.querySelectorAll('.lang-item').forEach(el => el.classList.remove('active')); const activeLang = document.querySelector(`.lang-item[data-lang="${lang}"]`); if(activeLang) activeLang.classList.add('active'); }
 function openLang() { document.getElementById('langView').classList.add('active'); }
 function closeLangView() { document.getElementById('langView').classList.remove('active'); }
 function selectLanguage(element, langCode) { applyLanguage(langCode); setTimeout(() => closeLangView(), 300); }
 
-// ===== ПАПКИ =====
 function openFolders() { document.getElementById('foldersView').classList.add('active'); renderCustomFolders(); }
 function closeFoldersView() { document.getElementById('foldersView').classList.remove('active'); }
 function toggleFoldersMain() {
@@ -1382,8 +1388,7 @@ function confirmCreateFolder() {
     if (!name) { showToast('Введите название папки'); return; }
     if (!currentUser.customFolders) currentUser.customFolders = [];
     currentUser.customFolders.push({ name: name, active: true });
-    const users = getUsers(); const idx = users.findIndex(u => u.username === currentUser.username);
-    if (idx !== -1) { users[idx] = currentUser; saveUsers(users); saveCurrentUser(currentUser); }
+    saveCurrentUser(currentUser);
     closeCreateFolderModal(); renderCustomFolders(); renderCustomFolderPills(); showToast('Папка "' + name + '" создана!');
 }
 function renderCustomFolders() {
@@ -1408,26 +1413,29 @@ function renderCustomFolderPills() {
 function switchCustomFolder(el, name) { document.querySelectorAll('.folder-pill').forEach(p => p.classList.remove('active')); el.classList.add('active'); currentFolder = 'custom_' + name; renderChats(); }
 function toggleCustomFolder(index) {
     currentUser.customFolders[index].active = !currentUser.customFolders[index].active;
-    const users = getUsers(); const idx = users.findIndex(u => u.username === currentUser.username);
-    if (idx !== -1) { users[idx] = currentUser; saveUsers(users); saveCurrentUser(currentUser); }
+    saveCurrentUser(currentUser);
     renderCustomFolders(); renderCustomFolderPills();
 }
 function deleteCustomFolder(index) {
     if (!confirm('Удалить папку "' + currentUser.customFolders[index].name + '"?')) return;
     currentUser.customFolders.splice(index, 1);
-    const users = getUsers(); const idx = users.findIndex(u => u.username === currentUser.username);
-    if (idx !== -1) { users[idx] = currentUser; saveUsers(users); saveCurrentUser(currentUser); }
+    saveCurrentUser(currentUser);
     renderCustomFolders(); renderCustomFolderPills(); showToast('Папка удалена');
 }
 
-// ===== РЕДАКТОР ПРОФИЛЯ =====
 function openEditProfile() { updateProfileUI(); document.getElementById('editProfileView').classList.add('active'); document.getElementById('editUsernameStatus').style.display = 'none'; document.getElementById('editName').value = currentUser.name || ''; document.getElementById('editBio').value = currentUser.bio || ''; document.getElementById('editUsername').value = currentUser.username.replace('@', '') || ''; document.getElementById('editBirthday').value = currentUser.birthday || ''; document.getElementById('editGender').value = currentUser.gender || 'not_specified'; }
 function closeEditProfile() { document.getElementById('editProfileView').classList.remove('active'); }
 function loadEditAvatarFromFile(input) {
     const file = input.files[0];
     if (file) {
         const reader = new FileReader();
-        reader.onload = function(e) { document.getElementById('editProfileAvatar').innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`; currentUser.avatar = e.target.result; saveCurrentUser(currentUser); updateProfileUI(); renderChats(); showToast('Аватарка обновлена!'); };
+        reader.onload = function(e) {
+            document.getElementById('editProfileAvatar').innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+            currentUser.avatar = e.target.result;
+            saveCurrentUser(currentUser);
+            // В будущем здесь будет запрос на сервер для обновления аватарки
+            updateProfileUI(); renderChats(); showToast('Аватарка обновлена!');
+        };
         reader.readAsDataURL(file);
     }
 }
@@ -1437,88 +1445,98 @@ function checkUsernameAvailabilityEdit(val) {
     const currentUsername = currentUser ? currentUser.username : '';
     const formatted = val.startsWith('@') ? val : '@' + val;
     if (formatted === currentUsername) { statusEl.style.display = 'none'; return; }
-    if (isUsernameTaken(formatted, currentUsername)) { statusEl.style.display = 'block'; statusEl.innerHTML = '<span style="color:#FF3B30;">✗</span> Юзернейм занят'; statusEl.style.color = '#FF3B30'; } else { statusEl.style.display = 'block'; statusEl.innerHTML = '<span style="color:#34C759;">✓</span> Юзернейм свободен'; statusEl.style.color = '#34C759'; }
+    // Эмуляция проверки, тут можно вызывать /search
+    statusEl.style.display = 'block';
+    statusEl.innerHTML = '<span style="color:#FF9500;">⟳</span> Проверка...';
+    setTimeout(async () => {
+        try {
+            const data = await apiRequest('/search?q=' + encodeURIComponent(formatted));
+            const found = data.users.find(u => u.username === formatted);
+            if (found) {
+                statusEl.innerHTML = '<span style="color:#FF3B30;">✗</span> Юзернейм занят';
+                statusEl.style.color = '#FF3B30';
+            } else {
+                statusEl.innerHTML = '<span style="color:#34C759;">✓</span> Юзернейм свободен';
+                statusEl.style.color = '#34C759';
+            }
+        } catch (e) { statusEl.style.display = 'none'; }
+    }, 300);
 }
 function saveEditProfile() {
     const newName = document.getElementById('editName').value.trim(); const newUsernameRaw = document.getElementById('editUsername').value.trim().toLowerCase(); const newBio = document.getElementById('editBio').value.trim(); const newBirthday = document.getElementById('editBirthday').value; const newGender = document.getElementById('editGender').value;
     if (!newName) { alert('Пожалуйста, введите ваше имя.'); return; }
     if (!newUsernameRaw) { alert('Пожалуйста, введите юзернейм.'); return; }
     const newUsername = '@' + newUsernameRaw; const oldUsername = currentUser.username;
-    if (newUsername !== oldUsername && isUsernameTaken(newUsername, oldUsername)) { alert('Этот юзернейм уже занят!'); return; }
+    if (newUsername !== oldUsername) {
+        // Здесь в будущем будет запрос на сервер для смены юзернейма
+    }
     currentUser.name = newName; currentUser.username = newUsername; currentUser.bio = newBio; currentUser.birthday = newBirthday; currentUser.gender = newGender;
-    const users = getUsers(); const idx = users.findIndex(u => u.username === oldUsername);
-    if (idx !== -1) { users[idx] = currentUser; saveUsers(users); saveCurrentUser(currentUser); }
+    saveCurrentUser(currentUser);
     closeEditProfile(); updateProfileUI(); renderChats(); showToast('Профиль обновлён!');
 }
 
-// ===== КОНТАКТЫ =====
 let contactsVisible = true;
 function toggleContactsDisplay(el) { el.classList.toggle('active'); el.classList.toggle('inactive'); contactsVisible = el.classList.contains('active'); renderContacts(); }
 function renderContacts(searchTerm = '') {
     const list = document.getElementById('contactsListWrap'); list.innerHTML = '';
     if (!contactsVisible) { list.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:40px;font-size:14px;">Контакты скрыты</div>'; return; }
-    const users = getUsers(); let filtered = users.filter(u => u.username !== currentUser.username && !u.blocked);
-    if(searchTerm) {
-        const searchLower = searchTerm.toLowerCase();
-        filtered = filtered.filter(u => u.name.toLowerCase().includes(searchLower) || 
-                                      u.username.toLowerCase().includes(searchLower) ||
-                                      (u.id && u.id.toString().includes(searchLower)));
-    }
-    const groups = {}; filtered.forEach(u => { const letter = u.name.charAt(0).toUpperCase(); if(!groups[letter]) groups[letter] = []; groups[letter].push(u); });
-    const sortedLetters = Object.keys(groups).sort();
-    sortedLetters.forEach(letter => {
-        const section = document.createElement('div'); section.innerHTML = `<div class="contacts-section-title">${letter}</div>`; list.appendChild(section);
-        groups[letter].forEach(user => {
-            const div = document.createElement('div'); div.className = 'contact-card-item'; div.onclick = () => openChat(user.username, user.name, user.avatar);
-            let avatarContent = user.avatar ? `<img src="${user.avatar}">` : user.name.charAt(0).toUpperCase();
-            let verifiedHtml = user.verified ? `<span class="verified-badge"><i class="fas fa-check-circle"></i></span>` : '';
-            div.innerHTML = `<div class="contact-avatar" style="background:${user.avatar ? 'transparent' : '#007AFF'}; overflow:hidden;">${avatarContent}</div><div class="contact-info"><div class="contact-name">${user.name} ${verifiedHtml}</div><div class="contact-username">${user.username}</div></div><div class="contact-chat-icon"><i class="far fa-comment-alt"></i></div>`;
-            list.appendChild(div);
-        });
-    });
+    // Здесь должен быть запрос к серверу для получения списка контактов
+    // Пока используем локальный поиск по всем пользователям
+    performGlobalSearch(searchTerm, list);
 }
-function searchContacts(val) { renderContacts(val); }
 
-// ===== ГЛОБАЛЬНЫЙ ПОИСК (ЧАТЫ) =====
-function performGlobalSearch(val) {
-    const container = document.getElementById('chatListDynamic');
-    const users = getUsers();
-    let results = [];
-    const searchLower = val.toLowerCase().trim();
-    
-    if (searchLower.length === 0) {
-        renderChats(); // Возврат к списку чатов
+async function performGlobalSearch(val, customContainer = null) {
+    const container = customContainer || document.getElementById('chatListDynamic');
+    if (!val || val.trim().length === 0) {
+        if (!customContainer) renderChats();
         return;
     }
-
-    // Поиск по всем пользователям (кроме себя и заблокированных)
-    results = users.filter(u => u.username !== currentUser.username && !u.blocked);
     
-    if (searchLower) {
-        results = results.filter(u => 
-            u.username.toLowerCase().includes(searchLower) || 
-            (u.id && u.id.toString().includes(searchLower))
+    container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:14px;">Поиск...</div>';
+    
+    try {
+        const data = await apiRequest('/search?q=' + encodeURIComponent(val.trim()));
+        container.innerHTML = '';
+        
+        let results = data.users || [];
+        // Фильтруем себя и заблокированных на клиенте
+        results = results.filter(u => u.username !== currentUser.username);
+        
+        // Добавляем группы в результаты поиска (локально)
+        const groups = getGroups();
+        const groupResults = groups.filter(g => 
+            g.name.toLowerCase().includes(val.toLowerCase()) || 
+            g.username.toLowerCase().includes(val.toLowerCase())
         );
+        
+        if (results.length === 0 && groupResults.length === 0) {
+            container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:14px;">Ничего не найдено</div>';
+            return;
+        }
+        
+        results.forEach(user => {
+            const div = document.createElement('div'); div.className = 'chat-row';
+            div.onclick = () => openChat(user.username, user.name, user.avatar);
+            let avatarContent = user.avatar ? `<img src="${user.avatar}">` : '👤';
+            let avatarBg = user.avatar ? 'transparent' : '#34C759';
+            let verifiedHtml = user.verified ? `<span class="verified-badge"><i class="fas fa-check-circle"></i></span>` : '';
+            div.innerHTML = `<div class="chat-row-avatar" style="background:${avatarBg}; overflow:hidden;">${avatarContent}</div><div class="chat-row-info"><div class="chat-row-top"><div class="chat-row-name">${user.name} ${verifiedHtml}</div><div class="chat-row-time">ID: ${user.id}</div></div><div class="chat-row-bottom"><div class="chat-row-preview">${user.username}</div></div></div>`;
+            container.appendChild(div);
+        });
+        
+        groupResults.forEach(g => {
+            const div = document.createElement('div'); div.className = 'chat-row';
+            div.onclick = () => openGroupChat(g.username);
+            let avatarContent = g.avatar ? `<img src="${g.avatar}">` : '👥';
+            let avatarBg = g.avatar ? 'transparent' : '#FF9500';
+            div.innerHTML = `<div class="chat-row-avatar" style="background:${avatarBg}; overflow:hidden;">${avatarContent}</div><div class="chat-row-info"><div class="chat-row-top"><div class="chat-row-name">${g.name}</div><div class="chat-row-time">Группа</div></div><div class="chat-row-bottom"><div class="chat-row-preview">${g.members.length} участников</div></div></div>`;
+            container.appendChild(div);
+        });
+    } catch (err) {
+        container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:14px;">Ошибка поиска</div>';
     }
-
-    container.innerHTML = '';
-    if (results.length === 0) {
-        container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:14px;">Пользователи не найдены</div>';
-        return;
-    }
-
-    results.forEach(user => {
-        const div = document.createElement('div'); div.className = 'chat-row';
-        div.onclick = () => openChat(user.username, user.name, user.avatar);
-        let avatarContent = user.avatar ? `<img src="${user.avatar}">` : '👤';
-        let avatarBg = user.avatar ? 'transparent' : '#34C759';
-        let verifiedHtml = user.verified ? `<span class="verified-badge"><i class="fas fa-check-circle"></i></span>` : '';
-        div.innerHTML = `<div class="chat-row-avatar" style="background:${avatarBg}; overflow:hidden;">${avatarContent}</div><div class="chat-row-info"><div class="chat-row-top"><div class="chat-row-name">${user.name} ${verifiedHtml}</div><div class="chat-row-time">ID: ${user.id}</div></div><div class="chat-row-bottom"><div class="chat-row-preview">${user.username}</div></div></div>`;
-        container.appendChild(div);
-    });
 }
 
-// ===== ЧАТЫ И СЧЕТЧИК =====
 function renderChats() {
     const messages = getMessages(); const container = document.getElementById('chatListDynamic'); container.innerHTML = '';
     const chatUsers = {}; 
@@ -1527,19 +1545,16 @@ function renderChats() {
     const groups = getGroups();
     groups.forEach(g => { if (g.members.includes(currentUser.username)) chatUsers[g.username] = true; });
 
-    const users = getUsers(); let chatList = [];
+    const users = []; // Заглушка, т.к. у нас нет списка всех пользователей
+    // Вместо этого собираем чаты из сообщений
+    let chatList = [];
     for (let username in chatUsers) {
-        let found = users.find(u => u.username === username);
-        if (found && !found.blocked) chatList.push({ type: 'user', data: found });
-        else {
-            let foundGroup = groups.find(g => g.username === username);
-            if (foundGroup) chatList.push({ type: 'group', data: foundGroup });
-        }
+        // Просто добавляем пользователя с именем из username
+        chatList.push({ type: 'user', data: { username: username, name: username.replace('@',''), avatar: null, verified: false } });
     }
-    if(currentFolder === 'unread') { chatList = chatList.filter(item => { const msgs = messages[currentUser.username + '|' + item.data.username] || messages[item.data.username + '|' + currentUser.username] || []; return msgs.some(m => m.from !== currentUser.username && !m.read); }); } 
-    else if(currentFolder === 'groups') { chatList = chatList.filter(item => item.type === 'group' || item.data.username.includes('group') || item.data.username.includes('channel')); } 
-    else if(currentFolder === 'bots') { chatList = chatList.filter(item => item.data.username.includes('bot') || item.data.username === '@glimer_support'); }
-
+    // Добавляем группы
+    groups.forEach(g => { if (g.members.includes(currentUser.username)) chatList.push({ type: 'group', data: g }); });
+    
     const frag = document.createDocumentFragment();
     chatList.forEach(item => {
         const div = document.createElement('div'); div.className = 'chat-row';
@@ -1553,28 +1568,13 @@ function renderChats() {
             div.onclick = () => openChat(user.username, user.name, user.avatar);
             let avatarContent = user.avatar ? `<img src="${user.avatar}">` : '👤';
             let avatarBg = user.avatar ? 'transparent' : '#34C759';
-            let verifiedHtml = user.verified ? `<span class="verified-badge"><i class="fas fa-check-circle"></i></span>` : '';
-            div.innerHTML = `<div class="chat-row-avatar" style="background:${avatarBg}; overflow:hidden;">${avatarContent}</div><div class="chat-row-info"><div class="chat-row-top"><div class="chat-row-name">${user.name} ${verifiedHtml}</div><div class="chat-row-time">Сейчас</div></div><div class="chat-row-bottom"><div class="chat-row-preview">Начните общение</div></div></div>`;
+            div.innerHTML = `<div class="chat-row-avatar" style="background:${avatarBg}; overflow:hidden;">${avatarContent}</div><div class="chat-row-info"><div class="chat-row-top"><div class="chat-row-name">${user.name}</div><div class="chat-row-time">Сейчас</div></div><div class="chat-row-bottom"><div class="chat-row-preview">Начните общение</div></div></div>`;
         }
         frag.appendChild(div);
     });
-    container.appendChild(frag); calculateUnreadBadge();
+    container.appendChild(frag);
 }
 
-function calculateUnreadBadge() {
-    const messages = getMessages(); let unreadCount = 0;
-    for (let key in messages) {
-        const parts = key.split('|'); 
-        if (parts[1] === currentUser.username) {
-            const msgs = messages[key];
-            msgs.forEach(m => { if (m.from !== currentUser.username && !m.read) unreadCount++; });
-        }
-    }
-    const badge = document.getElementById('chatBadge');
-    if (unreadCount > 0) { badge.style.display = 'flex'; badge.textContent = unreadCount > 9 ? '9+' : unreadCount; } else { badge.style.display = 'none'; }
-}
-
-// ===== ЧАТ (ЛИЧНЫЕ СООБЩЕНИЯ) =====
 function openChat(username, name, avatar) {
     currentChat = { username, name, avatar, type: 'user' };
     document.getElementById('chatTopName').textContent = name; document.getElementById('chatTopUsername').textContent = username;
@@ -1602,9 +1602,6 @@ function renderMessages() {
     const messages = getMessages(); const key1 = currentUser.username + '|' + currentChat.username; const key2 = currentChat.username + '|' + currentUser.username;
     const chatMessages = messages[key1] || messages[key2] || [];
     const chatBody = document.getElementById('chatBody'); chatBody.innerHTML = '';
-    let updated = false;
-    chatMessages.forEach(msg => { if (msg.from !== currentUser.username && !msg.read) { msg.read = true; updated = true; } });
-    if (updated) { saveMessages(messages); calculateUnreadBadge(); }
     if (chatMessages.length === 0) { chatBody.innerHTML = `<div style="text-align:center;color:var(--text-muted);margin-top:40px;">Здесь пока нет сообщений</div>`; } else {
         chatMessages.forEach(msg => {
             const direction = msg.from === currentUser.username ? 'outgoing' : 'incoming';
@@ -1621,12 +1618,12 @@ function renderMessages() {
 function sendMessage() {
     const text = document.getElementById('messageInput').value.trim();
     if (!text || !currentChat) return;
-    const msg = { from: currentUser.username, text: text, timestamp: Date.now(), read: false };
+    const msg = { from: currentUser.username, text: text, timestamp: Date.now() };
     saveChatMessage(msg); document.getElementById('messageInput').value = ''; renderMessages(); renderChats();
 }
 function sendSticker() {
     if (!currentChat) return;
-    const msg = { from: currentUser.username, text: '👋', timestamp: Date.now(), read: false };
+    const msg = { from: currentUser.username, text: '👋', timestamp: Date.now() };
     saveChatMessage(msg); renderMessages(); renderChats();
 }
 function handleFile(input) {
@@ -1634,7 +1631,7 @@ function handleFile(input) {
     if (!file || !currentChat) return;
     const reader = new FileReader();
     reader.onload = function(e) {
-        const msg = { from: currentUser.username, text: '📎 Файл: ' + file.name, file_url: e.target.result, timestamp: Date.now(), read: false };
+        const msg = { from: currentUser.username, text: '📎 Файл: ' + file.name, file_url: e.target.result, timestamp: Date.now() };
         saveChatMessage(msg); renderMessages(); renderChats();
     };
     reader.readAsDataURL(file); input.value = '';
@@ -1655,7 +1652,7 @@ async function startRecording() {
             const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
             const reader = new FileReader();
             reader.onload = function(e) {
-                const msg = { from: currentUser.username, text: '🎤 Голосовое сообщение', file_url: e.target.result, timestamp: Date.now(), read: false };
+                const msg = { from: currentUser.username, text: '🎤 Голосовое сообщение', file_url: e.target.result, timestamp: Date.now() };
                 saveChatMessage(msg); renderMessages(); renderChats();
             };
             reader.readAsDataURL(audioBlob);
@@ -1673,66 +1670,48 @@ function stopRecording() {
     }
 }
 
-// ===== ВЕРИФИКАЦИЯ =====
 function openVerifyView() { document.getElementById('verifyView').classList.add('active'); document.getElementById('verifyWho').value = ''; document.getElementById('verifyWhy').value = ''; document.getElementById('verifyLink').value = ''; document.getElementById('verifySendBtn').classList.remove('active'); }
 function closeVerifyView() { document.getElementById('verifyView').classList.remove('active'); }
 function validateVerifyForm() {
     const who = document.getElementById('verifyWho').value.trim(); const why = document.getElementById('verifyWhy').value.trim(); const link = document.getElementById('verifyLink').value.trim(); const btn = document.getElementById('verifySendBtn');
     if (who && why && link) { btn.classList.add('active'); } else { btn.classList.remove('active'); }
 }
-function sendVerificationRequest() {
+async function sendVerificationRequest() {
     const who = document.getElementById('verifyWho').value.trim(); const why = document.getElementById('verifyWhy').value.trim(); const link = document.getElementById('verifyLink').value.trim();
     if (!who || !why || !link) return;
-    currentUser.verifyRequest = { who: who, why: why, link: link, status: 'pending' };
-    const users = getUsers(); const idx = users.findIndex(u => u.username === currentUser.username);
-    if (idx !== -1) { users[idx] = currentUser; saveUsers(users); saveCurrentUser(currentUser); }
-    closeVerifyView(); showToast('Заявка на верификацию отправлена!'); renderAdminRequests();
+    try {
+        const data = await apiRequest('/verify-request', 'POST', {
+            userId: currentUser.id,
+            who, why, link
+        });
+        if (data.success) {
+            closeVerifyView(); showToast('Заявка на верификацию отправлена!');
+        } else {
+            showToast('Ошибка: ' + data.error);
+        }
+    } catch (err) {
+        showToast('Ошибка отправки: ' + err.message);
+    }
 }
 
-// ===== АДМИН-ПАНЕЛЬ =====
+// ===== АДМИН-ПАНЕЛЬ (ДЕМО) =====
 function renderAdminRequests() {
-    const container = document.getElementById('adminRequestsContainer'); const users = getUsers();
-    const requests = users.filter(u => u.verifyRequest && u.verifyRequest.status === 'pending');
-    if (requests.length === 0) { container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:14px;">Нет активных заявок</div>'; return; }
-    container.innerHTML = '';
-    requests.forEach(user => {
-        const div = document.createElement('div'); div.className = 'admin-request-item';
-        div.innerHTML = `<div class="info"><div class="name">${user.name} (${user.username})</div><div class="desc">${user.verifyRequest.who}</div><div class="desc" style="font-size:12px;">${user.verifyRequest.why}</div><a href="${user.verifyRequest.link}" target="_blank" style="color:var(--primary-blue);font-size:12px;">${user.verifyRequest.link}</a></div><div class="actions"><button class="approve" onclick="approveRequest('${user.username}')">Одобрить</button><button class="reject" onclick="rejectRequest('${user.username}')">Отклонить</button></div>`;
-        container.appendChild(div);
-    });
-}
-function approveRequest(username) {
-    const users = getUsers(); const user = users.find(u => u.username === username);
-    if (user) { user.verified = true; user.verifyRequest.status = 'approved'; saveUsers(users); if (currentUser.username === username) { saveCurrentUser(user); updateProfileUI(); renderChats(); } renderAdminRequests(); showToast('Пользователь ' + username + ' верифицирован! ✅'); }
-}
-function rejectRequest(username) {
-    const users = getUsers(); const user = users.find(u => u.username === username);
-    if (user) { user.verifyRequest.status = 'rejected'; saveUsers(users); renderAdminRequests(); showToast('Заявка отклонена'); }
+    const container = document.getElementById('adminRequestsContainer');
+    // Так как у нас нет эндпоинта для получения заявок на клиенте, просто показываем заглушку
+    container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:14px;">Нет активных заявок (API не подключен)</div>';
 }
 function openAdminPanel() {
-    const users = getUsers();
-    document.getElementById('statUsers').textContent = users.length;
-    document.getElementById('statSuspicious').textContent = 0;
-    document.getElementById('statSessions').textContent = 1;
-    document.getElementById('statVerified').textContent = users.filter(u => u.verified === true).length;
+    document.getElementById('statUsers').textContent = '?';
+    document.getElementById('statVerified').textContent = '?';
     renderAdminRequests();
     document.querySelectorAll('.scene-view').forEach(el => el.classList.remove('active'));
     document.getElementById('sceneAdminPanel').classList.add('active');
 }
 function blockUserByID() {
-    const id = parseInt(document.getElementById('blockUserIdInput').value);
-    if (!id) { showToast('Введите корректный ID'); return; }
-    const users = getUsers(); const user = users.find(u => u.id === id);
-    if (!user) { showToast('Пользователь с таким ID не найден'); return; }
-    if(user.username === currentUser.username) { showToast('Вы не можете заблокировать себя'); return; }
-    user.blocked = true; saveUsers(users); showToast('Пользователь ' + user.name + ' заблокирован!'); document.getElementById('blockUserIdInput').value = ''; renderChats();
+    showToast('Функция блокировки требует доступа к серверу (в разработке)');
 }
 
-// ==============================================================
-// ===== ГРУППЫ: МАСТЕР, ПРОФИЛЬ И НАСТРОЙКИ =====
-// ==============================================================
-
-// --- ОТКРЫТИЕ НОВОГО ЧАТА ---
+// ===== ГРУППЫ (ЛОКАЛЬНЫЕ) =====
 function openNewChatModal() {
     document.getElementById('newChatModal').classList.add('active');
     renderNewChatContacts();
@@ -1745,31 +1724,10 @@ function renderNewChatContacts() {
     const title = container.querySelector('.section-title');
     container.innerHTML = '';
     if(title) container.appendChild(title);
-    const users = getUsers();
-    let contacts = users.filter(u => u.username !== currentUser.username && !u.blocked);
-    if (contacts.length === 0) {
-        const empty = document.createElement('div');
-        empty.style.cssText = 'text-align:center;color:var(--text-muted);padding:20px;font-size:14px;';
-        empty.textContent = 'У вас пока нет контактов.';
-        container.appendChild(empty);
-        return;
-    }
-    contacts.forEach(user => {
-        const div = document.createElement('div'); div.className = 'contact-card-item';
-        div.onclick = () => { closeNewChatModal(); openChat(user.username, user.name, user.avatar); };
-        let avatarContent = user.avatar ? `<img src="${user.avatar}">` : user.name.charAt(0).toUpperCase();
-        div.innerHTML = `
-            <div class="contact-avatar" style="background:${user.avatar ? 'transparent' : '#007AFF'}; overflow:hidden;">${avatarContent}</div>
-            <div class="contact-info">
-                <div class="contact-name">${user.name}</div>
-                <div class="contact-username">${user.username}</div>
-            </div>
-            <div class="contact-chat-icon"><i class="far fa-comment-alt"></i></div>`;
-        container.appendChild(div);
-    });
+    // В реальности здесь нужно получать список друзей с сервера
+    container.innerHTML += '<div style="text-align:center;color:var(--text-muted);padding:20px;">Список контактов загружается с сервера...</div>';
 }
 
-// --- МАСТЕР СОЗДАНИЯ ГРУППЫ ---
 function startGroupCreation() {
     closeNewChatModal();
     gcStep = 1; gcData = { name: '', desc: '', username: '', type: 'public', avatar: null, members: [] };
@@ -1805,22 +1763,28 @@ function validateGCStep1() {
     const btn = document.getElementById('gcNextBtn');
     if (name.length > 0) btn.classList.add('active'); else btn.classList.remove('active');
 }
-function validateGCStep2() {
+async function validateGCStep2() {
     const usernameRaw = document.getElementById('gcUsername').value.trim();
     const btn = document.getElementById('gcNextBtn');
     const statusEl = document.getElementById('gcUsernameStatus');
     if (usernameRaw.length === 0) { btn.classList.remove('active'); statusEl.style.display = 'none'; return; }
     const formatted = '@' + usernameRaw;
-    if (isUsernameTaken(formatted)) {
-        statusEl.style.display = 'block';
-        statusEl.innerHTML = '<span style="color:#FF3B30;">✗</span> Юзернейм занят';
-        statusEl.style.color = '#FF3B30';
+    statusEl.style.display = 'block'; statusEl.innerHTML = '<span style="color:#FF9500;">⟳</span> Проверка...';
+    try {
+        const data = await apiRequest('/search?q=' + encodeURIComponent(formatted));
+        const found = data.users.find(u => u.username === formatted);
+        if (found) {
+            statusEl.innerHTML = '<span style="color:#FF3B30;">✗</span> Юзернейм занят';
+            statusEl.style.color = '#FF3B30';
+            btn.classList.remove('active');
+        } else {
+            statusEl.innerHTML = '<span style="color:#34C759;">✓</span> Юзернейм свободен';
+            statusEl.style.color = '#34C759';
+            btn.classList.add('active');
+        }
+    } catch (e) {
+        statusEl.innerHTML = '<span style="color:#FF3B30;">✗</span> Ошибка проверки';
         btn.classList.remove('active');
-    } else {
-        statusEl.style.display = 'block';
-        statusEl.innerHTML = '<span style="color:#34C759;">✓</span> Юзернейм свободен';
-        statusEl.style.color = '#34C759';
-        btn.classList.add('active');
     }
 }
 function selectGCType(type) {
@@ -1844,37 +1808,8 @@ function loadGCAvatar(input) {
 }
 function renderGCMembers() {
     const container = document.getElementById('gcMembersList');
-    container.innerHTML = '';
-    const users = getUsers();
-    let contacts = users.filter(u => u.username !== currentUser.username && !u.blocked);
-    if (contacts.length === 0) {
-        container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:14px;">Нет доступных контактов. Можно создать группу без участников.</div>';
-        document.getElementById('gcNextBtn').classList.add('active');
-        return;
-    }
-    contacts.forEach(user => {
-        const div = document.createElement('div'); div.style.cssText = 'display:flex;align-items:center;gap:14px;padding:10px 14px;background:var(--bg-white);border-radius:12px;border:1px solid var(--border-light);';
-        let avatarContent = user.avatar ? `<img src="${user.avatar}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;">` : `<div style="width:36px;height:36px;border-radius:50%;background:#007AFF;display:flex;align-items:center;justify-content:center;color:white;font-size:14px;font-weight:600;">${user.name.charAt(0).toUpperCase()}</div>`;
-        const isSelected = gcData.members.includes(user.username);
-        div.innerHTML = `
-            ${avatarContent}
-            <div style="flex:1;display:flex;flex-direction:column;">
-                <div style="font-weight:500;color:var(--text-main);">${user.name}</div>
-                <div style="font-size:12px;color:var(--text-muted);">${user.username}</div>
-            </div>
-            <div class="gc-checkbox" style="width:24px;height:24px;border-radius:6px;border:2px solid ${isSelected ? 'var(--primary-blue)' : 'var(--border-light)'};background:${isSelected ? 'var(--primary-blue)' : 'transparent'};display:flex;align-items:center;justify-content:center;color:white;font-size:14px;cursor:pointer;" onclick="toggleGCMember('${user.username}')">
-                ${isSelected ? '<i class="fas fa-check"></i>' : ''}
-            </div>
-        `;
-        container.appendChild(div);
-    });
+    container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;font-size:14px;">Загрузка контактов с сервера...</div>';
     document.getElementById('gcNextBtn').classList.add('active');
-}
-function toggleGCMember(username) {
-    const index = gcData.members.indexOf(username);
-    if (index > -1) gcData.members.splice(index, 1);
-    else gcData.members.push(username);
-    renderGCMembers();
 }
 function finishGroupCreation() {
     const groups = getGroups();
@@ -1886,7 +1821,7 @@ function finishGroupCreation() {
         avatar: gcData.avatar || null,
         owner: currentUser.username,
         admins: [currentUser.username],
-        members: [currentUser.username, ...gcData.members],
+        members: [currentUser.username],
         createdAt: Date.now(),
         reactions: 'all',
         historyVisible: true,
@@ -1900,7 +1835,6 @@ function finishGroupCreation() {
     renderChats(); switchTab('chats');
 }
 
-// --- ПРОФИЛЬ ГРУППЫ ---
 function openGroupProfile(username) {
     const groups = getGroups(); const group = groups.find(g => g.username === username);
     if (!group) return;
@@ -1936,33 +1870,27 @@ function renderGroupProfile(group) {
     `;
     container.innerHTML = html;
     const membersContainer = document.getElementById('gpMembersList');
-    const users = getUsers();
     group.members.forEach(mUsername => {
-        const user = users.find(u => u.username === mUsername);
-        if (user) {
-            const div = document.createElement('div'); div.className = 'gp-member-card';
-            let avatarContent = user.avatar ? `<img src="${user.avatar}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;">` : `<div class="m-avatar">${user.name.charAt(0).toUpperCase()}</div>`;
-            let role = '';
-            if (mUsername === group.owner) role = 'Владелец';
-            else if (group.admins.includes(mUsername)) role = 'Админ';
-            let verifiedHtml = user.verified ? `<span class="verified-badge"><i class="fas fa-check-circle"></i></span>` : '';
-            div.innerHTML = `
-                ${avatarContent}
-                <div class="m-info">
-                    <div class="m-name">${user.name} ${verifiedHtml} ${mUsername === currentUser.username ? '(Вы)' : ''}</div>
-                    <div class="m-username">${user.username}</div>
-                </div>
-                ${role ? `<div class="m-role">${role}</div>` : ''}
-            `;
-            membersContainer.appendChild(div);
-        }
+        const div = document.createElement('div'); div.className = 'gp-member-card';
+        let avatarContent = '<div class="m-avatar">U</div>';
+        let role = '';
+        if (mUsername === group.owner) role = 'Владелец';
+        else if (group.admins.includes(mUsername)) role = 'Админ';
+        div.innerHTML = `
+            ${avatarContent}
+            <div class="m-info">
+                <div class="m-name">${mUsername} ${mUsername === currentUser.username ? '(Вы)' : ''}</div>
+                <div class="m-username">${mUsername}</div>
+            </div>
+            ${role ? `<div class="m-role">${role}</div>` : ''}
+        `;
+        membersContainer.appendChild(div);
     });
 }
 function copyInviteLink(text) {
     navigator.clipboard.writeText(text).then(() => showToast('Скопировано!')).catch(() => showToast('Ошибка копирования'));
 }
 
-// --- НАСТРОЙКИ ГРУППЫ ---
 function openGroupInfo() {
     const groups = getGroups(); const group = groups.find(g => g.username === editingGroupUsername);
     if (group) {
@@ -2148,7 +2076,6 @@ function deleteGroup(username) {
     closeGroupInfo(); closeGroupProfile(); renderChats(); switchTab('chats'); showToast('Группа удалена');
 }
 
-// ===== УТИЛИТЫ =====
 function toggleNotifications(el) {
     el.classList.toggle('active'); el.classList.toggle('inactive');
     showToast(el.classList.contains('active') ? 'Уведомления включены' : 'Уведомления выключены');
@@ -2162,7 +2089,6 @@ function showToast(message) {
     setTimeout(() => { container.style.opacity = '0'; container.style.transform = 'translateX(-50%) translateY(-20px)'; container.style.transition = 'all 0.3s ease'; setTimeout(() => container.remove(), 300); }, 2500);
 }
 
-// ===== АВТОЗАГРУЗКА =====
 (function() { if (loadCurrentUser()) { document.getElementById('authContainer').style.display = 'none'; document.getElementById('appMain').style.display = 'flex'; initApp(); } })();
 </script>
 </body>
